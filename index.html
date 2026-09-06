@@ -1,0 +1,1308 @@
+<!DOCTYPE html><html class="scroll-smooth dark" lang="en" style="scroll-behavior: smooth;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ahmed Istiaq — Physician-Technologist &amp; Systems Architect</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #070a13;
+        color: #e2e8f0;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+    }
+    ::-webkit-scrollbar { display: none; }
+
+    /* Modern subtle background grid */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+
+    /* Ambient animated mesh glow */
+    @keyframes orb-pulse {
+      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.35; }
+      50% { transform: translate(25px, -20px) scale(1.12); opacity: 0.55; }
+    }
+    .animate-orb {
+      animation: orb-pulse 11s ease-in-out infinite alternate;
+    }
+
+    /* Glass card border & surface styling */
+    .bento-card {
+      background: rgba(13, 19, 36, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      border-color: rgba(99, 140, 255, 0.35);
+      box-shadow: 0 16px 40px -12px rgba(0, 36, 142, 0.35);
+    }
+
+    /* Glowing gradient border shine */
+    .glow-border {
+      position: relative;
+    }
+    .glow-border::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(91, 184, 254, 0.5), rgba(0, 40, 142, 0.1), rgba(147, 204, 255, 0.3));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* Perspective & Card Hover 3D Tilt */
+    .perspective-container {
+      perspective: 1200px;
+    }
+    .tilt-card {
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+      transform-style: preserve-3d;
+    }
+
+    /* Scroll reveal subtle fade-up animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Timeline card targeted pulse animation */
+    @keyframes node-flash {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .timeline-focus-flash {
+      animation: node-flash 0.8s ease-in-out;
+    }
+
+    /* Spotlight Coverflow Gallery Styles */
+    .carousel-stage-container {
+      perspective: 1200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-track-slider {
+      display: flex;
+      align-items: center;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .spotlight-card {
+      flex-shrink: 0;
+      width: clamp(280px, 28vw, 360px);
+      height: 520px;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease, filter 0.55s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0.38;
+      filter: blur(1.5px) brightness(0.7);
+      transform: scale(0.86);
+      transform-origin: center center;
+      cursor: pointer;
+    }
+    .spotlight-card.is-active {
+      width: clamp(340px, 44vw, 560px);
+      opacity: 1;
+      filter: blur(0px) brightness(1);
+      transform: scale(1);
+      z-index: 30;
+      border-color: rgba(56, 189, 248, 0.65) !important;
+      box-shadow: 0 20px 50px -10px rgba(0, 100, 255, 0.4), 0 0 35px 2px rgba(56, 189, 248, 0.25) !important;
+    }
+    .spotlight-card:not(.is-active):hover {
+      opacity: 0.65;
+      filter: blur(0.5px) brightness(0.85);
+      transform: scale(0.9);
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#070a13",
+            "surface-card": "rgba(13, 20, 38, 0.72)",
+            "primary": "#3b82f6",
+            "primary-glow": "#60a5fa",
+            "secondary": "#38bdf8",
+            "accent": "#818cf8",
+            "dark-border": "rgba(255, 255, 255, 0.08)",
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+            display: ["Space Grotesk", "sans-serif"],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#070a13] text-[#e2e8f0] font-sans antialiased selection:bg-blue-600 selection:text-white relative bg-grid-pattern min-h-screen">
+<!-- Ambient Dynamic Lighting / Neon Mesh Orbs -->
+<div class="fixed top-[-100px] left-1/4 w-[520px] h-[520px] bg-blue-600/15 rounded-full blur-[130px] pointer-events-none -z-10 animate-orb"></div>
+<div class="fixed top-1/3 right-[-80px] w-[460px] h-[460px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none -z-10 animate-orb" style="animation-delay: -5s;"></div>
+<div class="fixed bottom-10 left-1/3 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none -z-10 animate-orb" style="animation-delay: -8s;"></div>
+<!-- FLOATING 2026 FROSTED GLASS NAVIGATION BAR -->
+<header class="fixed top-4 inset-x-0 z-50 px-4" id="main-nav-header">
+<div class="max-w-6xl mx-auto h-14 rounded-2xl bg-[#0b1021]/80 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.45)] px-4 flex items-center justify-between transition-all duration-300">
+<a class="nav-smooth-link flex items-center gap-2.5 group focus:outline-none cursor-pointer" href="#overview">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-mono text-xs font-bold shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:scale-105 transition-transform">
+      ℞
+    </div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-sm text-white leading-tight group-hover:text-blue-300 transition-colors">Ahmed Istiaq</span>
+<span class="text-[10px] font-mono text-cyan-400 leading-none">RpMC-54 · Systems</span>
+</div>
+</a>
+<nav class="hidden md:flex items-center gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/[0.05]">
+<a class="nav-smooth-link px-3 py-1.5 text-xs font-medium text-white bg-white/10 rounded-lg shadow-sm cursor-pointer transition-all hover:bg-white/20" href="#overview">Overview</a>
+<a class="nav-smooth-link px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-all cursor-pointer flex items-center gap-1" href="#identity-matrix"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Identity Matrix</a>
+<a class="nav-smooth-link px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-all cursor-pointer flex items-center gap-1" href="#medinote"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>MediNote</a>
+<a class="nav-smooth-link px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-all cursor-pointer" href="#visual-diary">Visual Diary</a>
+</nav>
+<div class="flex items-center gap-2.5">
+<div class="flex items-center gap-1.5">
+<a class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-center text-slate-300 hover:text-white hover:border-cyan-500/30 transition-all cursor-pointer" href="https://t.me/ahmedistiaq" rel="noopener noreferrer" target="_blank" title="Telegram">
+<svg class="w-4 h-4 fill-current text-cyan-400" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.536-.196 1.006.128.832.943z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-center text-slate-300 hover:text-white hover:border-slate-400/30 transition-all cursor-pointer" href="https://x.com" rel="noopener noreferrer" target="_blank" title="X">
+<svg class="w-3.5 h-3.5 fill-current text-slate-300" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+</div>
+<a class="nav-smooth-link inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-mono text-xs font-semibold shadow-[0_0_20px_-3px_rgba(59,130,246,0.6)] transition-all transform hover:-translate-y-0.5 cursor-pointer" href="#connect">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span>
+<span class="">Schedule Call</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full pt-28 pb-20 px-4">
+<div class="max-w-6xl mx-auto space-y-16" id="overview">
+<!-- TOP TELEMETRY STATUS BAR -->
+<div class="reveal-on-scroll flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 rounded-2xl bento-card border-white/10 text-xs text-slate-300 w-full">
+<div class="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[11px] font-semibold">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+</span>
+            ACTIVE ROTATION · WARD 14 / ICU
+          </div>
+<span class="text-slate-600 hidden sm:inline">|</span>
+<span class="flex items-center gap-1.5 text-slate-300 font-medium text-[11px] sm:text-xs">
+<span class="material-symbols-outlined text-[16px] text-cyan-400">local_hospital</span>
+            Rangpur Medical College, Rangpur</span>
+</div>
+<div class="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] text-cyan-400/90 bg-cyan-950/40 px-3 py-1 rounded-lg border border-cyan-800/40 w-full sm:w-auto justify-center sm:justify-start">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+          latency: ~0.14ms · offline-first telemetry
+        </div>
+</div>
+<!-- HERO BENTO GRID -->
+<div class="reveal-on-scroll grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch revealed">
+<!-- Left: Premium Stylized Photo Bento (5 cols) -->
+<div class="lg:col-span-5 flex flex-col perspective-container">
+<div class="tilt-card relative group rounded-3xl bento-card p-3 h-full flex flex-col justify-between overflow-hidden shadow-2xl" id="portrait-hero-card" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+<!-- Radial Backlight Glow for Image -->
+<div class="absolute -top-10 -left-10 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/40 transition-colors duration-700"></div>
+<div class="absolute -bottom-10 -right-10 w-72 h-72 bg-indigo-600/30 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-600/40 transition-colors duration-700"></div>
+<!-- Image Frame Container -->
+<div class="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 group-hover:border-blue-500/40 transition-colors duration-500">
+<img alt="Ahmed Istiaq — Physician &amp; Systems Engineer" class="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-105 filter group-hover:contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA59sn4LT8JWJsN7CZIlSQhedzKp_dLZq_ANBAefvIggV6uhDNBdzgtRyCyqCn50Finau_dovzn3LdPv7tOkssNQ91c17ONBPTXTTYtpgL0ryI0CG5Kz6NbwvwYVtbNfLiAli4G5bFDRnpY-rQvoDgMmdHTCbfDoHgGpVznVLdPm0OVUxvBHaRuFOGo5FmagvML6_ZRnme5z2wuOL5qDP2hiF8euwDl1X_lIxrTfluABLsqV06Zl6F2BBcEuHXNb4K6Nok">
+<!-- Atmospheric dark gradient shading for text contrast -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#070a13] via-[#070a13]/25 to-transparent opacity-90 group-hover:opacity-75 transition-opacity"></div>
+<!-- Floating Top Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono text-cyan-300 shadow-lg"><span class="material-symbols-outlined text-[14px]">school</span>
+                  NDC-24 · RpMC-54</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-[10px] font-mono text-emerald-300">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  ONLINE
+                </span>
+</div>
+<!-- Sleek Bottom In-Photo Metadata Plaque -->
+<div class="absolute bottom-3 inset-x-3 p-3.5 rounded-xl bg-black/65 backdrop-blur-xl border border-white/15 shadow-2xl">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-base text-white tracking-tight flex items-center gap-1.5">
+                      Ahmed Istiaq
+                      <span class="material-symbols-outlined text-blue-400 text-[18px]">verified</span>
+</h3>
+<p class="text-xs font-mono text-cyan-300/90 mt-0.5">Clinical Trainee &amp; Systems Dev</p>
+</div>
+<div class="w-9 h-9 rounded-xl bg-blue-600/30 border border-blue-400/40 text-blue-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">biotech</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro Quick-Action Footbar inside Bento Photo Card -->
+<div class="pt-3 px-1 flex items-center justify-between text-xs text-slate-400">
+<span class="font-mono text-[11px] text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-blue-400">location_on</span>
+                Rangpur / Dhaka, BD
+              </span>
+<span class="font-mono text-[11px] text-cyan-400">Dual-Practice Synthesis</span>
+</div>
+</div>
+</div>
+<!-- Right: Bento Hero Content & High-Impact Metrics (7 cols) -->
+<div class="lg:col-span-7 flex flex-col justify-between gap-6">
+<!-- Editorial Headline Card -->
+<div class="p-8 rounded-3xl bento-card glow-border relative overflow-hidden flex flex-col justify-center space-y-4">
+<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs tracking-wider uppercase">
+<span class="material-symbols-outlined text-[15px]">neurology</span>
+              CLINICAL MEDICINE × COMPUTATIONAL SYSTEMS
+            </div>
+<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+              Bridging Clinical Intuition with 
+              <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent italic">
+                Algorithmic Precision
+              </span>
+</h1>
+<p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              A 2nd-year MBBS trainee at <strong class="text-white font-semibold">Rangpur Medical College</strong> and self-driven technologist. Crafting fault-tolerant health systems, clinical reasoning tools, and precision telemetry.</p>
+<div class="flex flex-wrap items-center gap-3 pt-2">
+<a class="nav-smooth-link inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-mono font-medium transition-all" href="#identity-matrix">
+<span class="material-symbols-outlined text-[16px]">explore</span>
+<span class="">Explore Trajectory</span>
+</a>
+<a class="nav-smooth-link inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/30 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-medium transition-all" href="#visual-diary">
+<span class="material-symbols-outlined text-[16px]">photo_library</span>
+<span class="">View Gallery</span>
+</a>
+</div>
+</div>
+<!-- High-Impact 4-Column Stat Bento -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="p-4 rounded-2xl bento-card border-white/5 hover:border-blue-500/30 transition-all group">
+<div class="font-mono text-2xl sm:text-3xl font-bold text-blue-400 group-hover:scale-105 transition-transform">RpMC-54</div>
+<div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">2nd Year MBBS</div>
+<div class="text-[10px] text-slate-500 mt-0.5">Govt. Medical College</div>
+</div>
+<div class="p-4 rounded-2xl bento-card border-white/5 hover:border-cyan-500/30 transition-all group">
+<div class="font-mono text-2xl sm:text-3xl font-bold text-cyan-400 group-hover:scale-105 transition-transform">NDC-24</div>
+<div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Notre Dame College</div>
+<div class="text-[10px] text-slate-500 mt-0.5">Dhaka (Science)</div>
+</div>
+<div class="p-4 rounded-2xl bento-card border-white/5 hover:border-indigo-500/30 transition-all group">
+<div class="font-mono text-2xl sm:text-3xl font-bold text-indigo-400 group-hover:scale-105 transition-transform">0ms</div>
+<div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Offline-First</div>
+<div class="text-[10px] text-slate-500 mt-0.5">Rx Clinical Telemetry</div>
+</div>
+<div class="p-4 rounded-2xl bento-card border-white/5 hover:border-emerald-500/30 transition-all group">
+<div class="font-mono text-2xl sm:text-3xl font-bold text-emerald-400 group-hover:scale-105 transition-transform">Full-Stack</div>
+<div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Next · React · TS</div>
+<div class="text-[10px] text-slate-500 mt-0.5">Postgres &amp; FHIR API</div>
+</div>
+</div>
+</div>
+</div>
+<!-- IDENTITY MATRIX / ACADEMIC LINEAGE -->
+<section class="reveal-on-scroll space-y-8 pt-6 pb-6 relative scroll-mt-24 revealed" id="identity-matrix">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/10">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-[15px]">timeline</span>
+<span class="">Academic &amp; Clinical Lineage</span>
+<span class="text-slate-600">·</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded-full bg-blue-400/20 text-blue-300 font-semibold">Identity Matrix</span>
+</div>
+<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">Educational Foundations &amp; <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent italic">Institutional Trajectory</span></h2>
+<p class="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">The formative crucible spanning foundational sciences, rigorous pre-university discipline, and intensive clinical medical apprenticeship.</p>
+</div>
+<div class="flex items-center gap-2 text-xs font-mono text-cyan-400/90 bg-cyan-950/40 px-3 py-1.5 rounded-xl border border-cyan-800/40">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span class="">Continuous Progression · 2012 – Present</span>
+</div>
+</div>
+<div class="relative pl-4 sm:pl-8 space-y-8">
+<div class="absolute left-[19px] sm:left-[35px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-blue-500 via-cyan-400 to-emerald-400 opacity-40"></div>
+<!-- Step 1: BIAM Model School & College (2012 – 2022) -->
+<div class="relative flex flex-col md:flex-row items-start gap-6 group" id="stage-biam">
+<button class="timeline-nav-dot absolute -left-[20px] sm:-left-[36px] top-1.5 w-6 h-6 rounded-full bg-[#070a13] border-2 border-blue-400 flex items-center justify-center shadow-[0_0_12px_rgba(96,165,250,0.5)] z-10 cursor-pointer hover:scale-125 transition-transform" data-target="stage-biam-card" title="Jump to BIAM Model School &amp; College" type="button">
+<span class="w-2 h-2 rounded-full bg-blue-400"></span>
+</button>
+<div class="timeline-edu-card w-full rounded-3xl bento-card p-6 border-white/10 hover:border-blue-500/30 transition-all flex flex-col md:flex-row gap-6 scroll-mt-28" id="stage-biam-card">
+<div class="w-full md:w-5/12 h-56 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0 bg-slate-900 border border-white/10">
+<img alt="BIAM Model School &amp; College" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN0icFT3qWfQD9JKU0SXjZ88WJwQJvg_ZSyMLPez2Qkwa6VLFUd0c7rHEpq1CkljUTNl2RTr26QABN6QbYrUpkWkW9JU7VwdBvJQzcGmw5nKXpvFG9TW2J6LgSprNIoM-tzzrEBHZAolmI3x0EBJTAOsSHuitDMAFt8ZcSwQyvJoFz7n0IZr-7VjO8zWMZEzNdXMVundEd25_dcDl_IPOUrnKtVi1k7OnTIqKe-ZNGsdvfeo2Qn5A8s5315wEledGBcnM">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="px-2.5 py-1 rounded-full bg-blue-500/20 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300 font-semibold">PRIMARY &amp; SECONDARY (SSC)</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-slate-300">Rangpur, BD</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<span class="font-mono text-xs font-semibold text-blue-400 tracking-wider uppercase">2012 – 2022</span>
+<span class="px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono text-blue-300">Secondary School Certificate</span>
+</div>
+<h3 class="font-display font-bold text-xl sm:text-2xl text-white">BIAM Model School &amp; College</h3>
+<p class="text-xs sm:text-sm text-slate-300 leading-relaxed">A decade of academic discipline spanning fundamental mathematics, biology, algorithmic programming explorations, and secondary graduation with highest distinction.</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Secondary School Certificate</span>
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Academic Distinction</span>
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Early Computing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Notre Dame College (2022 – 2024) -->
+<div class="relative flex flex-col md:flex-row items-start gap-6 group" id="stage-ndc">
+<button class="timeline-nav-dot absolute -left-[20px] sm:-left-[36px] top-1.5 w-6 h-6 rounded-full bg-[#070a13] border-2 border-cyan-400 flex items-center justify-center shadow-[0_0_12px_rgba(56,189,248,0.6)] z-10 cursor-pointer hover:scale-125 transition-transform" data-target="stage-ndc-card" title="Jump to Notre Dame College, Dhaka" type="button">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+</button>
+<div class="timeline-edu-card w-full rounded-3xl bento-card p-6 border-white/10 hover:border-cyan-500/30 transition-all flex flex-col md:flex-row gap-6 scroll-mt-28" id="stage-ndc-card">
+<div class="w-full md:w-5/12 h-56 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0 bg-slate-900 border border-white/10">
+<img alt="Notre Dame College" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeniAH4yonARtv977aiQhleOwaoP91Zry0pazwrQfe66orwgZOlh8dnrKTcZ3srkZzWflGCWwJF5Aot0FhFApalG8ldv7zjO2mtV9mVpit3a44_K3Hgwk9V50C6fdecQimCenU4ztxiFndjBAIluwOKS7SBUlyqv7UXDZ_x0KiVRGRb0dc3x7oj-42MWVisuw8xEMpjM0RKt9jnekYeHsdLM0zBDaZmxfRChZeEIdPixwvDrpzvvBwyq6cIz5ghqXX5Ss">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="px-2.5 py-1 rounded-full bg-cyan-500/20 backdrop-blur-md border border-cyan-400/30 text-[10px] font-mono text-cyan-300 font-semibold">HIGHER SECONDARY (HSC)</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-slate-300">Motijheel, Dhaka</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<span class="font-mono text-xs font-semibold text-cyan-400 tracking-wider uppercase">2022 – 2024</span>
+<span class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[11px] font-mono text-cyan-300">Science Division · Batch NDC-24</span>
+</div>
+<h3 class="font-display font-bold text-xl sm:text-2xl text-white">Notre Dame College, Dhaka</h3>
+<p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Elite college curriculum emphasizing intense pre-university sciences, rigorous laboratory physics, organic chemistry synthesis, and collegiate intellectual development forming foundational critical reasoning.</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Higher Secondary Certificate</span>
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Pure Science</span>
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Analytical Logic</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Rangpur Medical College (2024 – Present) -->
+<div class="relative flex flex-col md:flex-row items-start gap-6 group" id="stage-rpmc">
+<button class="timeline-nav-dot absolute -left-[20px] sm:-left-[36px] top-1.5 w-6 h-6 rounded-full bg-[#070a13] border-2 border-emerald-400 flex items-center justify-center shadow-[0_0_12px_rgba(52,211,153,0.6)] z-10 cursor-pointer hover:scale-125 transition-transform" data-target="stage-rpmc-card" title="Jump to Rangpur Medical College, Rangpur" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+</button>
+<div class="timeline-edu-card w-full rounded-3xl bento-card glow-border p-6 border-white/10 hover:border-emerald-500/30 transition-all flex flex-col md:flex-row gap-6 scroll-mt-28" id="stage-rpmc-card">
+<div class="w-full md:w-5/12 h-56 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0 bg-slate-900 border border-white/10">
+<img alt="Rangpur Medical College, Rangpur" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrU5lVahsGF2DpXLr2xo6mR0ih_pUDKe3kr4u_BqFheImqRM20MA0ra6J2IeCbENGdRIgHlkR_gP2fOisBhnIOQ_Ol-2Tzba7n1F-kaqng98LSRQWBl82xqbpBTK0u3zqo0wh30FApaApU2Rsh7DFn6QBI2ZdAvXPy4g4PesqyROEfYsI50ZxuXEg9rm9PWJc7ONypUnt2S6UiOYHM20fTqjmcvcv67tMo_weKxr4GnN51tKW12QhPDv7ZAADhTQB4kE0">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="px-2.5 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-[10px] font-mono text-emerald-300 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>CURRENT AFFILIATION
+        </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-slate-300">Rangpur, BD</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<span class="font-mono text-xs font-semibold text-emerald-400 tracking-wider uppercase">2024 – Present</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-300">MBBS Trainee · Batch RpMC-54</span>
+</div>
+<h3 class="font-display font-bold text-xl sm:text-2xl text-white">Rangpur Medical College, Rangpur</h3>
+<p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Undergraduate clinical apprenticeship undertaking extensive rotations across inpatient wards, emergency medicine, pathology, and procedural surgical observer roles alongside clinical decision-support systems prototyping.</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Clinical Diagnostics</span>
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Inpatient Telemetry</span>
+<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Medical Informatics</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MEDINOTE SECTION -->
+<section class="reveal-on-scroll space-y-8 pt-6 pb-6 relative scroll-mt-24 revealed" id="medinote">
+<div class="p-6 sm:p-8 rounded-3xl bento-card glow-border relative overflow-hidden space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-wider">
+<svg class="w-3.5 h-3.5 fill-current text-cyan-400" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.536-.196 1.006.128.832.943z"></path></svg>
+<span class="">TELEGRAM ACADEMIC REPOSITORY • @medinote_139</span>
+</div>
+<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">MediNote: <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent italic">Curated Medical Archive</span> &amp; Clinical Syntheses</h2>
+<p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">Handwritten anatomical blueprints, high-yield physiology mechanisms, biochemical pathways, and ward clinical pearls curated for medical scholars.</p>
+</div>
+<div class="flex flex-col sm:flex-row md:flex-col gap-2.5 w-full sm:w-auto">
+<a class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-mono text-xs font-semibold shadow-[0_0_20px_-3px_rgba(56,189,248,0.5)] transition-all hover:scale-105 active:scale-95 cursor-pointer w-full sm:w-auto" href="https://t.me/medinote_139" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.536-.196 1.006.128.832.943z"></path></svg>
+<span class="">Join Telegram Channel (@medinote_139)</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-cyan-400/40 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 font-mono font-medium text-xs tracking-wide transition-all shadow-sm hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] cursor-pointer w-full sm:w-auto" href="#medinote">
+<span class="">Explore MediNotes</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+<div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 flex flex-col justify-center">
+<div class="font-mono text-xl sm:text-2xl font-bold text-indigo-400">Vector &amp; PDF</div>
+<div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Syntheses Format</div>
+<div class="text-[10px] text-slate-500 mt-0.5">Print-ready schematics</div>
+</div>
+<div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 flex flex-col justify-center">
+<div class="font-mono text-xl sm:text-2xl font-bold text-emerald-400">Live Sync</div>
+<div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Telegram Cloud</div>
+<div class="text-[10px] text-slate-500 mt-0.5">Instant updates &amp; flashcards</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
+<div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/30 transition-all group flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">accessibility_new</span>
+</div>
+<h4 class="font-display font-bold text-sm text-white group-hover:text-cyan-300 transition-colors">Anatomy</h4>
+</div>
+<span class="text-[10px] font-mono text-cyan-400/90 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Hand-Drawn Vector</span>
+</div>
+<div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all group flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">cardiology</span>
+</div>
+<h4 class="font-display font-bold text-sm text-white group-hover:text-blue-300 transition-colors">Physiology</h4>
+</div>
+<span class="text-[10px] font-mono text-blue-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Mechanistic Flow</span>
+</div>
+<div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-indigo-500/30 transition-all group flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">science</span>
+</div>
+<h4 class="font-display font-bold text-sm text-white group-hover:text-indigo-300 transition-colors">Biochemistry</h4>
+</div>
+<span class="text-[10px] font-mono text-indigo-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Pathway Matrix</span>
+</div>
+<div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all group flex flex-col justify-between space-y-3">
+<div class="space-y-2">
+<div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">biotech</span>
+</div>
+<h4 class="font-display font-bold text-sm text-white group-hover:text-emerald-300 transition-colors">Histology</h4>
+</div>
+<span class="text-[10px] font-mono text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Diagnostic Stains</span>
+</div>
+<div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-rose-500/30 transition-all group flex flex-col justify-between space-y-3 sm:col-span-2 md:col-span-1">
+<div class="space-y-2">
+<div class="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">medication</span>
+</div>
+<h4 class="font-display font-bold text-sm text-white group-hover:text-rose-300 transition-colors">Others</h4>
+</div>
+<span class="text-[10px] font-mono text-rose-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-rose-400/30"></span>Clinical Pearls</span>
+</div>
+</div>
+</div>
+</section>
+<!-- VISUAL DIARY / SPOTLIGHT FOCUS GALLERY -->
+<section class="reveal-on-scroll space-y-6 pt-6 pb-6 relative select-none scroll-mt-24 revealed" id="visual-diary">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/10">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-[15px]">photo_camera</span>
+<span class="">Spotlight Focus Gallery</span>
+<span class="text-slate-600">·</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded-full bg-cyan-400/20 text-cyan-300 font-semibold" id="gallery-counter-badge">Frame 02 / 11</span>
+</div>
+<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+          Through the Lens: <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent italic">Clinical, Urban &amp; Botanical</span> Perspectives
+        </h2>
+<p class="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+          Interactive spotlight coverflow. Click any frame to inspect, navigate with arrows or controls, and explore focal clinical &amp; urban moments.
+        </p>
+</div>
+<!-- Right: Navigation Controls & Autoplay Toggle -->
+<div class="flex items-center gap-3 self-start md:self-end">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition-all cursor-pointer" id="gallery-autoplay-btn">
+<span class="material-symbols-outlined text-[16px] text-cyan-400" id="autoplay-icon">play_arrow</span>
+<span id="autoplay-text" class="">Autoplay</span>
+</button>
+<div class="flex items-center gap-1.5">
+<button aria-label="Previous frame" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer" id="gallery-prev-btn">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next frame" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer" id="gallery-next-btn">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Category Filter Tabs -->
+<div class="flex flex-wrap items-center justify-between gap-3" id="gallery-filter-tabs">
+<div class="flex flex-wrap items-center gap-2">
+<button class="gallery-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-all bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] cursor-pointer" data-filter="all">All Frames (11)</button>
+<button class="gallery-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-slate-400 hover:text-white bg-white/5 border border-white/5 hover:border-white/15 transition-all cursor-pointer" data-filter="clinical">Campus &amp; Clinical (2)</button>
+<button class="gallery-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-slate-400 hover:text-white bg-white/5 border border-white/5 hover:border-white/15 transition-all cursor-pointer" data-filter="botanical">Botanical &amp; Micro (5)</button>
+<button class="gallery-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-slate-400 hover:text-white bg-white/5 border border-white/5 hover:border-white/15 transition-all cursor-pointer" data-filter="urban">Urban &amp; Nocturne (4)</button>
+</div>
+<div class="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-400">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px]">
+<span class="material-symbols-outlined text-[13px] text-cyan-400">keyboard</span>
+<span class="">← / → Keys Active</span>
+</span>
+</div>
+</div>
+<!-- STAGE CAROUSEL CONTAINER -->
+<div class="carousel-stage-container relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-[#0a0f21]/80 to-[#060812]/95 backdrop-blur-2xl h-[680px] flex flex-col justify-between p-4" id="carousel-viewport" style="touch-action: pan-y; cursor: grab; user-select: none;">
+<!-- Edge subtle fade gradients -->
+<div class="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#070a13] to-transparent pointer-events-none z-20"></div>
+<div class="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#070a13] to-transparent pointer-events-none z-20"></div>
+<!-- Central Coverflow Track with dynamic centering translation -->
+<div class="gallery-track-slider flex items-center gap-6 my-auto" id="gallery-track" style="transform: translateX(-87px); transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);">
+<!-- Frame 1: RpMC Entrance -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="clinical" data-category-name="Campus &amp; Clinical" data-desc="Main entrance portico with white-coat medical students on academic rounds." data-exif="24mm · ƒ/1.8 · ISO 100" data-index="0" data-location="Rangpur, Bangladesh" data-title="Rangpur Medical College Entrance">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Rangpur Medical College Entrance" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtjKtPoJtfqhGl8LfTXiJs7Me3unuqF-uHvO_6V-gBKhy_LAHi25ZXCpSv0BOp-Tia5ABqe_S4S0pO3pV30j4k1zxv24huMSPk0NLNji5HAV8v9kb3EfJELNIlP7x4k49XNa1Srs2JJWH3h0AFhDgYec-nMaur0vp2kK-XLVltBP_NE0-T9RCZBnoZmyFN0CY1C1bVrPrDKJ2qWQjCM12cXF6pH1ZKkddB0S8Oiwm9xp-51CVtIW8-uWmnLz_iVmgC7VI">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">local_hospital</span>RpMC Entrance
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">24mm · ƒ/1.8</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Campus &amp; Clinical</span>
+<span class="text-slate-500">01 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Rangpur Medical College Entrance</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Main entrance portico with white-coat medical students on academic rounds.</p>
+</div>
+</div>
+<!-- Frame 2: Campus Courtyard -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden is-active" data-category="clinical" data-category-name="Campus &amp; Clinical" data-desc="Collegiate balcony view overlooking athletic grounds and tiered faculties." data-exif="16mm · Ultra-Wide · ƒ/2.2" data-index="1" data-location="Rangpur Medical College Field" data-title="Campus Courtyard &amp; Academic Wings">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Campus Courtyard &amp; Academic Wings" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaExCM4iIRPnfSnyIAePbJNJ2VfHBBN_aOoRXupnxCeezv724SLynBZD97mJX2spXz0F20825D4CqiRhb-wPfrco5n_TD9rJRbzaLHIAQGT4PVACoTITQlhtq99GIp1XYSyzxJHdvQs4EgcTDvg84wj2jcU9EpqA1KGL_80ZRozJFtt0JDiR5XXGdJppaTXFLsGxgGyocJO0jACLZ26afd-dnWU8ly1wV1a-Kxmkid6aMEyE1FlOrG1EBBSJexWtjqwgk">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">apartment</span>Campus Field
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">16mm · Ultra-Wide</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Campus &amp; Clinical</span>
+<span class="text-slate-500">02 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Campus Courtyard &amp; Academic Wings</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Collegiate balcony view overlooking athletic grounds and tiered faculties.</p>
+</div>
+</div>
+<!-- Frame 3: Nocturnal Alleyways -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="urban" data-category-name="Urban &amp; Nocturne" data-desc="Rain-dampened asphalt, silhouette rickshaw, and warm solitary streetlights." data-exif="ISO 1600 · 1/25s · ƒ/1.8" data-index="2" data-location="Historic District Alleyways" data-title="Nocturnal Alleyways / Rangpur">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Nocturnal Alleyways / Rangpur" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFS4FjaN5wZmplJ9_R1Y0AjkrmCyKWtyAzCdNzGys1MRTORFVjtNQSyscf8FSATrptLrNglOjhIVNz8io6jiQuc3ldrwuXw1RCJ4Csf22R6hfR1GSmRaCPQM6jTRXbIqIFLVkPGuoMW5owbQ4j_o4mGQK4fjg-S_gqBDvFTODJQTukCqh360UfHYKz1Cb1RcvAgOM5devAPZ4ffc-QmpCSpLYGfRaJ3Ju-kpIXHjrLLqazRKzNF6PQ4nsVJrIz6QIxAu0">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">nightlight</span>Nocturne
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">ISO 1600 · 1/25s</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Urban &amp; Nocturne</span>
+<span class="text-slate-500">03 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Nocturnal Alleyways / Rangpur</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Rain-dampened asphalt, silhouette rickshaw, and warm solitary streetlights.</p>
+</div>
+</div>
+<!-- Frame 4: Red Roses at the Casement -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="botanical" data-category-name="Botanical &amp; Micro" data-desc="Deep red roses held before iron casement bars, reflecting gentle natural daylight." data-exif="Natural Light · ƒ/1.9 Macro" data-index="3" data-location="Ward 14 Balcony" data-title="Red Roses at the Casement">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Red Roses at the Casement" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG7nSUIeyN_XiX16SMnI-ZC1Yf_HiFhOFw_u0rbuIrXZdXtyJCeBakPiGstcLc96ZbOrcrUa-rJ9e5jOiiwD45FLCM2ZH264RpN2OWO29Uts3bCw0vr_edfPVB8JZ1w_7AzZCbGAyw-6RwwgwSYK9i80DCsLjZbYA9ALd7gmlHdqmeXA7Hl2j-h0gdOPft8XPvBNf83bCnk7zXGRStULzgJ-n-GI9cHdV70ToLuWQvnh44aJbIsT3peMWbywlovtjSce4">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-rose-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">filter_vintage</span>Crimson Micro
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-rose-500/30 backdrop-blur-md border border-rose-400/30 text-[10px] font-mono text-rose-300">Natural Light</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Botanical &amp; Micro</span>
+<span class="text-slate-500">04 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Red Roses at the Casement</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Deep red roses held before iron casement bars, reflecting gentle natural daylight.</p>
+</div>
+</div>
+<!-- Frame 5: Academic Architecture -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="clinical" data-category-name="Campus &amp; Clinical" data-desc="Linear architecture and brickwork facade under clear daylight." data-exif="24mm · ƒ/2.8 · ISO 64" data-index="4" data-location="Notre Dame Campus Grounds" data-title="Institutional Facade &amp; Symmetry">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Institutional Facade" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnamxFVUhrCNCBBkOqPPT6Bdyo2LDJW-r-NarQ4di6RIp43I3tRXXHP1Jsw7jhWyvZsmFCnim4ag9pJs2N-sLfYPk_0xqBXw6n6HTXuKZIdnv1YR3ULFW-hTSmdpLuBa1LZWgxEPDUSTVguobn-vs4hRSaNNw66X2pHacOXwa5aYl3BRN5ORhhN7L2pP119DlAehsykcOSYEpgUQQr9sibIJRVsq-JDQF4dOvzuHuZjTtqBisq3I-OwltjJhH44S4Cx9A">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">school</span>Academic Wing
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">ISO 64 · 24mm</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Campus &amp; Clinical</span>
+<span class="text-slate-500">05 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Institutional Facade &amp; Symmetry</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Linear architecture and brickwork facade under clear daylight.</p>
+</div>
+</div>
+<!-- Frame 6: Clinical Study & Literature -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="clinical" data-category-name="Campus &amp; Clinical" data-desc="Deep concentration reviewing pathology and physiological literature." data-exif="50mm · ƒ/1.8 · Low Light" data-index="5" data-location="Medical Library" data-title="Deep Study &amp; Literary Focus">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Deep Study &amp; Literary Focus" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiN-k7h3eXJ4X5_GO39Ze7nR3iWACiceAgkknb1e6JYZTYlYZZ5ZOtoSxPBOKB2ApOknfJTRKZ0ws8u0NZzxWG8Rbhtlkyqrptq4r0rB-HvF9JNEKd4zxQUznZcU-6y55R6mGKq7yz8gESiVX9tVyaMEh3SFUqMpP4-DJfzCmHQCyuq01r0NB2zuhHShgSlIrc0wT2duaJwacfe15_-hEeRIH9dANL16-BIhR62mdbZ3I28UnbJ0nnrkx7v5uQJZhsitA">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">menu_book</span>Study
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">50mm · ƒ/1.8</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Campus &amp; Clinical</span>
+<span class="text-slate-500">06 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Deep Study &amp; Literary Focus</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Deep concentration reviewing pathology and physiological literature.</p>
+</div>
+</div>
+<!-- Frame 7: Nocturne Atmosphere -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="urban" data-category-name="Urban &amp; Nocturne" data-desc="Pavement reflections, evening quietude, and night exploration." data-exif="28mm · ISO 3200" data-index="6" data-location="Rangpur Nocturne" data-title="Rangpur Wet Streets by Night">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Rangpur Wet Streets by Night" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY4gZKewiaP9a9gm69JlJ3nNDmRa03uw2p7BfUUyRDtO8E8PgNzt-L56cGu6ZAoNe8uQkNwUO3oKi3pK5anZ5NAbo_L-3uVK5tf9fTCE90wTyeXMp_WYrk0kQ2WOVDbUjPiZBOHxWqz1Q-TPfMwyhXuZJg8tk9d2eVOYGNDGJF1g1EUN52wOfd0XpJOyLhC-fpan4BNTP24CxDs-3A668klG7GSp27pjuYJ7p2ceMB6l12zUNbfhu7bO2GKq-hU3SbYZ8">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">nightlight</span>Urban Night
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">ISO 3200</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Urban &amp; Nocturne</span>
+<span class="text-slate-500">07 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Rangpur Wet Streets by Night</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Pavement reflections, evening quietude, and night exploration.</p>
+</div>
+</div>
+<!-- Frame 8: Botanical Micro -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="botanical" data-category-name="Botanical &amp; Micro" data-desc="Petal architecture and delicate textures in morning light." data-exif="ƒ/2.0 · Macro · Daylight" data-index="7" data-location="Hospital Botanical Grounds" data-title="Velvet Flora &amp; Morning Mist">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Velvet Flora" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa6ReAMGdccdT2SqB_xkRHbKcVB4LeEJ2V_j2w--WsELDC0nIdd_rydQg9qBsL8CKSvmcAvXT9p54epRn0AWEzeH3dQVfsoIUInCaywbwTQeQjFSZqdTHzkC5M1uthA5ZGFP8noqZMk1eNlW3vnwCHQ71yKfMTL2RvihzjMSrAMCKvtiLjA0nkX3bYXakWx2hpdr_-u_kyHdDfi28ezUFoGaB6A7jX9SapbTJ3NCHUUbFfYUpl2XBWUCDh_6PCOVw7ZLM">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-pink-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">local_florist</span>Macro Flora
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-pink-500/30 backdrop-blur-md border border-pink-400/30 text-[10px] font-mono text-pink-300">ƒ/2.0 Macro</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Botanical &amp; Micro</span>
+<span class="text-slate-500">08 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Velvet Flora &amp; Morning Mist</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Petal architecture and delicate textures in morning light.</p>
+</div>
+</div>
+<!-- Frame 9: Secondary Institution Campus View -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="clinical" data-category-name="Campus &amp; Clinical" data-desc="Formative corridors, courtyard assembly fields, and academic life." data-exif="Wide 18mm · Natural Tone" data-index="8" data-location="BIAM Campus Grounds" data-title="Open Field &amp; Learning Halls">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Open Field &amp; Learning Halls" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLTpSKOrHHapExA3Ik1lBZwABNHg6X_BVWaw_zyYzJ3IK1I-ABCVniU-dsUFJi-_KNMT6tSqlDwO1L6ykusxZR_egMZhSRfD8q98qIqarDFJiXrq0rlxb9dNWlN5chnl0jq-A3vLQKd1z_jNVL7XDx6iwPULCAH-daoIBMiOAc5tRmV8tdNhOxpPmdPb2G5bWPq_4eHiYbVEPD4HC6AuYiXfFK0MKcJV4JczaURpvPMLylKu8gmGJhcgs2iyaL2Z31Gag">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">sunny</span>Assembly Field
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">Wide 18mm</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Campus &amp; Clinical</span>
+<span class="text-slate-500">09 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Open Field &amp; Learning Halls</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Formative corridors, courtyard assembly fields, and academic life.</p>
+</div>
+</div>
+<!-- Frame 10: Crimson Botanical -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="botanical" data-category-name="Botanical &amp; Micro" data-desc="Rich crimson hues against cool morning ambient backdrop." data-exif="28mm · ƒ/2.0 · Macro" data-index="9" data-location="Ward Balcony" data-title="Solitary Crimson Petals">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Solitary Crimson Petals" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp88t3uVz-8FCkjwzPQgs4GZ5xTgnA_j60jtt4lnL2gFjPrmoyXDmCzmpf_pB2J94gDyLI8DGGHUhwiTfC4bpvosWRhneKOqIjLTEF2LA4R3WSr1Llk6b5WFgm8kvCgeZZsQ__oliNgnxr8zusb18BFiTu0L0OqfpzZnIguZEBM12KZe_nN6VWozThDcAkp50tPi37kdpWwG0atiPK8WaMnLnJjL1UQnBzOfow1AgqQw7s1aBEQ6-KPuuZoiHBGw198_A">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-pink-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">filter_vintage</span>Crimson
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-pink-500/30 backdrop-blur-md border border-pink-400/30 text-[10px] font-mono text-pink-300">Macro Vivid</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Botanical &amp; Micro</span>
+<span class="text-slate-500">10 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Solitary Crimson Petals</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Rich crimson hues against cool morning ambient backdrop.</p>
+</div>
+</div>
+<!-- Frame 11: Nocturnal Solitude -->
+<div class="spotlight-card rounded-2xl bento-card p-3 flex flex-col justify-between overflow-hidden" data-category="urban" data-category-name="Urban &amp; Nocturne" data-desc="Quiet contemplation under solitary city lanterns." data-exif="24mm · ISO 2500" data-index="10" data-location="Rangpur Nocturne" data-title="Quiet Streetlamp Horizons">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden bg-slate-900 flex-shrink-0">
+<img alt="Quiet Streetlamp Horizons" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFg4A-juU7F-OrnzqDAbYUxvnxbaXXP10BIFvfqNjMItGOMz6OnbdUUgpsrbsYB8z4c_ZYxCm6R03s6oYn38GN68h_TnLrIzYbUlNbCQAjk2vZb24TmnEzAxmAdBuOzSobscLGQZ3Hg82qVKmDMmI9NxjjiKqN6sG2nBR0qprqsipw13i6s4Asae2mgmODrricn95fUjCCVXBSKFBLj_NmAemxG619-6FWMrVlCTldZTpgDhKvM6uYRH3sEd898YyTdWs">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<div class="absolute top-2.5 left-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-cyan-300 flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[12px]">nightlight</span>Nocturne
+</span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/30 text-[10px] font-mono text-blue-300">ISO 2500</span>
+</div>
+<div class="active-badge absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-500/25 border border-cyan-400/40 text-cyan-200 font-mono text-[10px] flex items-center gap-1 shadow-lg hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>SPOTLIGHT
+</div>
+</div>
+<div class="p-2.5 space-y-1">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="text-cyan-400 font-semibold">Urban &amp; Nocturne</span>
+<span class="text-slate-500">11 / 11</span>
+</div>
+<h4 class="font-display font-bold text-sm sm:text-base text-white truncate">Quiet Streetlamp Horizons</h4>
+<p class="text-xs text-slate-400 line-clamp-1">Quiet contemplation under solitary city lanterns.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE SCRUBBER / DOT INDICATORS -->
+<div class="flex flex-col items-center justify-center gap-3 pt-2">
+<div class="flex items-center gap-1.5 p-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md" id="gallery-dots-container"><button type="button" aria-label="Navigate to frame 1" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 2" class="transition-all duration-300 rounded-full cursor-pointer w-7 h-2.5 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_10px_rgba(56,189,248,0.7)]"></button><button type="button" aria-label="Navigate to frame 3" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 4" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 5" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 6" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 7" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 8" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 9" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 10" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button><button type="button" aria-label="Navigate to frame 11" class="transition-all duration-300 rounded-full cursor-pointer w-2.5 h-2.5 bg-white/20 hover:bg-white/50"></button></div>
+<div class="flex items-center justify-between w-full px-1 text-xs font-mono text-slate-500">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+<span class="">Slide side-to-side (drag/swipe) or use arrows to change photos</span>
+</div>
+<span class="text-cyan-400/80">Optical Engine v2.6 · High-Fidelity Coverflow</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- 2026 HIGH-END BESPOKE FOOTER -->
+<footer class="w-full border-t border-white/10 bg-[#050811] relative z-10 scroll-mt-20" id="connect">
+<div class="max-w-6xl mx-auto px-4 py-12">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+<!-- Bio Summary -->
+<div class="md:col-span-5 space-y-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-blue-400 font-bold text-lg">℞ / Ahmed Istiaq</span>
+<span class="text-xs font-mono text-slate-500">Portfolio &amp; Research</span>
+</div>
+<p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+            Bridging academic clinical inquiry at Rangpur Medical College with biomedical algorithms, and digital health infrastructure.
+          </p>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-mono">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            RpMC Clinical Trainee
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="md:col-span-3 space-y-2">
+<div class="font-mono text-xs text-slate-300 uppercase tracking-widest mb-3">Direct Index</div>
+<ul class="space-y-2 text-xs font-mono text-slate-400">
+<li class=""><a class="nav-smooth-link hover:text-cyan-400 transition-colors flex items-center gap-1.5 cursor-pointer" href="#overview">Overview &amp; Bio</a></li>
+<li class=""><a class="nav-smooth-link hover:text-cyan-400 transition-colors flex items-center gap-1.5 cursor-pointer" href="#identity-matrix">Identity Matrix</a></li>
+<li class=""><a class="nav-smooth-link hover:text-cyan-400 transition-colors flex items-center gap-1.5 cursor-pointer" href="#medinote"><span class="material-symbols-outlined text-[13px] text-cyan-400">menu_book</span>MediNote Archive (@medinote_139)</a></li>
+<li class=""><a class="nav-smooth-link hover:text-cyan-400 transition-colors flex items-center gap-1.5 cursor-pointer" href="#visual-diary">Visual Diary &amp; Photos</a></li>
+</ul>
+</div>
+<!-- Social / Dev Networks -->
+<div class="md:col-span-4 space-y-3">
+<div class="font-mono text-xs text-slate-300 uppercase tracking-widest mb-3">Connect &amp; Networks</div>
+<p class="text-xs text-slate-400">Direct clinical dispatches, project updates, and open communication channels.</p>
+<div class="flex flex-wrap gap-2 pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white hover:border-blue-500/40 transition-all" href="https://www.facebook.com/share/1CaAhKz5Vb/" rel="noopener noreferrer" target="_blank" title="Facebook">
+<svg class="w-3.5 h-3.5 fill-current text-blue-400" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+<span class="">Facebook</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white hover:border-cyan-500/40 transition-all" href="https://t.me/ahmedistiaq" rel="noopener noreferrer" target="_blank" title="Telegram">
+<svg class="w-3.5 h-3.5 fill-current text-cyan-400" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.536-.196 1.006.128.832.943z"></path></svg>
+<span class="">Telegram</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white hover:border-emerald-500/40 transition-all" href="https://whatsapp.com" rel="noopener noreferrer" target="_blank" title="WhatsApp">
+<svg class="w-3.5 h-3.5 fill-current text-emerald-400" viewBox="0 0 24 24"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.275-.1-.475-.15-.675.15-.2.301-.775.979-.95 1.18-.176.2-.351.226-.652.076-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.498-1.784-1.674-2.085-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.15-.175.2-.3.301-.501.1-.2.05-.376-.025-.526-.075-.15-.675-1.628-.925-2.227-.243-.583-.49-.504-.674-.513l-.576-.01c-.2 0-.526.075-.802.376-.275.301-1.052 1.028-1.052 2.508 0 1.48 1.077 2.908 1.228 3.109.15.2 2.12 3.237 5.136 4.54.717.31 1.277.496 1.713.635.72.229 1.376.197 1.895.12.579-.087 1.78-.727 2.03-1.43.25-.702.25-1.303.175-1.43-.075-.126-.275-.201-.576-.351zM12.004 21.996h-.002c-1.8 0-3.564-.484-5.109-1.401l-.366-.217-3.799.996 1.014-3.702-.238-.379c-1.007-1.604-1.54-3.468-1.54-5.385 0-5.518 4.49-10.008 10.013-10.008 2.673 0 5.187 1.042 7.078 2.934 1.89 1.891 2.931 4.406 2.931 7.08 0 5.52-4.49 10.009-10.008 10.009zM12 0C5.373 0 0 5.373 0 12c0 2.115.553 4.179 1.603 5.999L0 24l6.173-1.618C7.904 23.372 9.919 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"></path></svg>
+<span class="">WhatsApp</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white hover:border-red-500/40 transition-all" href="https://youtube.com" rel="noopener noreferrer" target="_blank" title="YouTube">
+<svg class="w-3.5 h-3.5 fill-current text-red-400" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+<span class="">YouTube</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white hover:border-slate-400/40 transition-all" href="https://x.com" rel="noopener noreferrer" target="_blank" title="X">
+<svg class="w-3.5 h-3.5 fill-current text-slate-300" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+<span class="">X</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bottom Credits & Legal -->
+<div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+<div class="">© 2025–2026 Ahmed Istiaq. Rangpur Medical College. All rights reserved.</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-slate-300 transition-colors" href="#">Ethical Declarations</a>
+<a class="hover:text-slate-300 transition-colors" href="#">DOI Directory</a>
+<a class="hover:text-slate-300 transition-colors" href="#">PGP Key</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- INTERSECTION OBSERVER & SMOOTH SCROLL SCRIPTS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Smooth Scroll with fixed navbar offset (~80px)
+    const smoothLinks = document.querySelectorAll('.nav-smooth-link, a[href^="#"]');
+    smoothLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (!targetId || targetId === '#' || !targetId.startsWith('#')) return;
+        const targetElem = document.querySelector(targetId);
+        if (targetElem) {
+          e.preventDefault();
+          const headerOffset = 84;
+          const elementPosition = targetElem.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          // Optional url update without instant jump
+          if (history.pushState) {
+            history.pushState(null, null, targetId);
+          }
+        }
+      });
+    });
+
+    // 2. Timeline node clickable jump & sleek focus pulse
+    const timelineDots = document.querySelectorAll('.timeline-nav-dot');
+    timelineDots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetCardId = dot.getAttribute('data-target');
+        const targetCard = document.getElementById(targetCardId);
+        if (targetCard) {
+          const headerOffset = 90;
+          const pos = targetCard.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: pos, behavior: 'smooth' });
+
+          // Visual glowing highlight feedback
+          document.querySelectorAll('.timeline-edu-card').forEach(card => {
+            card.classList.remove('border-blue-400', 'border-cyan-400', 'border-emerald-400', 'shadow-[0_0_30px_rgba(59,130,246,0.5)]', 'timeline-focus-flash');
+          });
+
+          targetCard.classList.add('timeline-focus-flash');
+          if (targetCardId.includes('biam')) {
+            targetCard.classList.add('border-blue-400', 'shadow-[0_0_30px_rgba(59,130,246,0.5)]');
+          } else if (targetCardId.includes('ndc')) {
+            targetCard.classList.add('border-cyan-400', 'shadow-[0_0_30px_rgba(56,189,248,0.5)]');
+          } else {
+            targetCard.classList.add('border-emerald-400', 'shadow-[0_0_30px_rgba(52,211,153,0.5)]');
+          }
+
+          setTimeout(() => {
+            targetCard.classList.remove('timeline-focus-flash');
+          }, 1200);
+        }
+      });
+    });
+
+    // 3. Scroll Reveal Animation via IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(elem => {
+      revealObserver.observe(elem);
+    });
+
+    // 4. 3D Card Interactive Tilt for Portrait
+    const portraitCard = document.getElementById('portrait-hero-card');
+    if (portraitCard) {
+      portraitCard.addEventListener('mousemove', (e) => {
+        const rect = portraitCard.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (-y / (rect.height / 2)) * 6;
+        const rotateY = (x / (rect.width / 2)) * 6;
+        portraitCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+      });
+
+      portraitCard.addEventListener('mouseleave', () => {
+        portraitCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    }
+  });
+</script>
+<!-- SPOTLIGHT / COVERFLOW GALLERY ENGINE -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const viewport = document.getElementById('carousel-viewport');
+    const track = document.getElementById('gallery-track');
+    const prevBtn = document.getElementById('gallery-prev-btn');
+    const nextBtn = document.getElementById('gallery-next-btn');
+    const dotsContainer = document.getElementById('gallery-dots-container');
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const allCards = Array.from(document.querySelectorAll('.spotlight-card'));
+    const counterBadge = document.getElementById('gallery-counter-badge');
+    
+    const autoplayBtn = document.getElementById('gallery-autoplay-btn');
+    const autoplayIcon = document.getElementById('autoplay-icon');
+    const autoplayText = document.getElementById('autoplay-text');
+
+    let currentTargetCard = allCards[1] || allCards[0];
+    let activeFilter = 'all';
+    let autoplayTimer = null;
+    let isAutoplaying = false;
+
+    function getVisibleCards() {
+      return allCards.filter(card => {
+        if (activeFilter === 'all') return true;
+        return card.getAttribute('data-category') === activeFilter;
+      });
+    }
+
+    function renderDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      const visible = getVisibleCards();
+      visible.forEach((card, idx) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Navigate to frame ${idx + 1}`);
+        const isCurrent = card.classList.contains('is-active');
+        dot.className = `transition-all duration-300 rounded-full cursor-pointer ${
+          isCurrent
+            ? 'w-7 h-2.5 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_10px_rgba(56,189,248,0.7)]'
+            : 'w-2.5 h-2.5 bg-white/20 hover:bg-white/50'
+        }`;
+        dot.addEventListener('click', () => {
+          setSpotlightCard(card);
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function updateTrackPosition() {
+      if (!currentTargetCard || !track || !viewport) return;
+      const viewportWidth = viewport.clientWidth;
+      const cardLeft = currentTargetCard.offsetLeft;
+      const cardWidth = currentTargetCard.offsetWidth;
+      const targetTranslateX = (viewportWidth / 2) - (cardLeft + (cardWidth / 2));
+      track.style.transform = `translateX(${targetTranslateX}px)`;
+    }
+
+    function setSpotlightCard(targetCard) {
+      if (!targetCard) return;
+      currentTargetCard = targetCard;
+
+      allCards.forEach(c => {
+        c.classList.remove('is-active');
+        const badge = c.querySelector('.active-badge');
+        if (badge) badge.classList.add('hidden');
+      });
+
+      targetCard.classList.add('is-active');
+      const activeBadge = targetCard.querySelector('.active-badge');
+      if (activeBadge) activeBadge.classList.remove('hidden');
+
+      const rawIdx = parseInt(targetCard.getAttribute('data-index') || '0', 10);
+      const padIdx = String(rawIdx + 1).padStart(2, '0');
+      if (counterBadge) counterBadge.textContent = `Frame ${padIdx} / 11`;
+
+      requestAnimationFrame(() => {
+        updateTrackPosition();
+      });
+
+      renderDots();
+    }
+
+    function goNext() {
+      const visible = getVisibleCards();
+      if (visible.length === 0) return;
+      const currentVisIdx = visible.findIndex(c => c.classList.contains('is-active'));
+      const nextIdx = (currentVisIdx + 1) % visible.length;
+      setSpotlightCard(visible[nextIdx]);
+    }
+
+    function goPrev() {
+      const visible = getVisibleCards();
+      if (visible.length === 0) return;
+      const currentVisIdx = visible.findIndex(c => c.classList.contains('is-active'));
+      const prevIdx = (currentVisIdx - 1 + visible.length) % visible.length;
+      setSpotlightCard(visible[prevIdx]);
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', () => { goNext(); resetAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goPrev(); resetAutoplay(); });
+
+    allCards.forEach(card => {
+      card.addEventListener('click', () => {
+        setSpotlightCard(card);
+        resetAutoplay();
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      updateTrackPosition();
+    });
+
+    // Touch & Pointer Drag support for Coverflow
+    if (viewport && track) {
+      let isDown = false;
+      let startX = 0;
+      let initialTranslateX = 0;
+      let moved = false;
+
+      function getTranslateX() {
+        const match = /translateX\(([-0-9.]+)px\)/.exec(track.style.transform);
+        return match ? parseFloat(match[1]) : 0;
+      }
+
+      viewport.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        moved = false;
+        startX = e.clientX;
+        initialTranslateX = getTranslateX();
+        viewport.style.cursor = 'grabbing';
+        track.style.transition = 'none';
+      });
+
+      window.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const deltaX = e.clientX - startX;
+        if (Math.abs(deltaX) > 5) {
+          moved = true;
+          track.style.transform = `translateX(${initialTranslateX + deltaX}px)`;
+        }
+      });
+
+      function onPointerUp(e) {
+        if (!isDown) return;
+        isDown = false;
+        viewport.style.cursor = 'grab';
+        track.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
+        const deltaX = e.clientX - startX;
+        if (moved && Math.abs(deltaX) > 40) {
+          if (deltaX < 0) {
+            goNext();
+          } else {
+            goPrev();
+          }
+        } else {
+          updateTrackPosition();
+        }
+      }
+
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
+    }
+
+    // Category filter tabs
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'shadow-[0_0_15px_rgba(59,130,246,0.4)]');
+          b.classList.add('text-slate-400', 'bg-white/5', 'border-white/5');
+        });
+        btn.classList.remove('text-slate-400', 'bg-white/5', 'border-white/5');
+        btn.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'shadow-[0_0_15px_rgba(59,130,246,0.4)]');
+
+        activeFilter = btn.getAttribute('data-filter');
+        allCards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (activeFilter === 'all' || cat === activeFilter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        const visible = getVisibleCards();
+        if (visible.length > 0) {
+          if (!visible.some(c => c.classList.contains('is-active'))) {
+            setSpotlightCard(visible[0]);
+          } else {
+            const active = visible.find(c => c.classList.contains('is-active'));
+            setSpotlightCard(active);
+          }
+        }
+        renderDots();
+        resetAutoplay();
+      });
+    });
+
+    // Autoplay toggle
+    function startAutoplay() {
+      isAutoplaying = true;
+      if (autoplayIcon) autoplayIcon.textContent = 'pause';
+      if (autoplayText) autoplayText.textContent = 'Pause';
+      if (autoplayBtn) {
+        autoplayBtn.classList.add('bg-cyan-500/20', 'border-cyan-400/40', 'text-cyan-300');
+      }
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(() => {
+        goNext();
+      }, 4000);
+    }
+
+    function stopAutoplay() {
+      isAutoplaying = false;
+      if (autoplayIcon) autoplayIcon.textContent = 'play_arrow';
+      if (autoplayText) autoplayText.textContent = 'Autoplay';
+      if (autoplayBtn) {
+        autoplayBtn.classList.remove('bg-cyan-500/20', 'border-cyan-400/40', 'text-cyan-300');
+      }
+      clearInterval(autoplayTimer);
+    }
+
+    function resetAutoplay() {
+      if (isAutoplaying) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(() => {
+          goNext();
+        }, 4000);
+      }
+    }
+
+    if (autoplayBtn) {
+      autoplayBtn.addEventListener('click', () => {
+        if (isAutoplaying) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+    }
+
+    renderDots();
+    setSpotlightCard(currentTargetCard);
+    window.addEventListener('load', () => {
+      setSpotlightCard(currentTargetCard);
+    });
+  });
+</script>
+
+
+</body></html>
